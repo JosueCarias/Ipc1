@@ -14,20 +14,23 @@ import javax.swing.JPanel;
  * @author josue
  */
 public class Snake extends JPanel {
+    //configuracion del colo de la serpiente
     Color colorSnake=Color.green;
+    //creacion de variables
     int tamMax, tam,can,res;
     public static int posXSnake=4;
     public static int posYSnake=4;
     public static int[][] cuerpo=new int[2000][2];
     public static int largo=0;
     public static boolean[][] pintar=new boolean[10][10];
-    
+    //constructor de la clase
     public Snake(int tamMax,int can){
         this.tamMax=tamMax;
         this.can=can;
         this.tam=tamMax/can;      
         
     }
+    //proceso para pintar a la serpiente 
     @Override
     public void paint(Graphics pintor){      
         super.paint(pintor);

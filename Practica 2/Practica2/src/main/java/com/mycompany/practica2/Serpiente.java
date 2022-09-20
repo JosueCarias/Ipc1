@@ -18,10 +18,11 @@ import static com.mycompany.practica2.Snake.posYSnake;
  * @author josue
  */
 public class Serpiente extends javax.swing.JFrame{
+    //creacion de variables
     public static int estado=0;
     public static int pasosX=0;
     public static int pasosY=0;
-    public static boolean hilos=false;
+    boolean hilos=false;
     /**
      * Creates new form Serpiente
      */
@@ -35,6 +36,7 @@ public class Serpiente extends javax.swing.JFrame{
         txtIntervalo.setText(""+velocidad);
         estado=cboDificultad.getSelectedIndex();
     }
+    //funcion para reiniciar el jugo cuando se pierde
     public void perder(){
         posXSnake=4;
         posYSnake=4;
@@ -60,6 +62,7 @@ public class Serpiente extends javax.swing.JFrame{
             }
         } 
     }
+    //configuracion inicial de la serpiente
     public Serpiente() {
         initComponents();
         // poner el formulario en el centro
@@ -227,7 +230,7 @@ public class Serpiente extends javax.swing.JFrame{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //ejecuta las instrucciones para mover a abajo
     private void btnAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbajoActionPerformed
         //generar a la serpiente
         actualizarSerpiente();
@@ -242,14 +245,14 @@ public class Serpiente extends javax.swing.JFrame{
         pasosX=0;
         largo++;
     }//GEN-LAST:event_btnAbajoActionPerformed
-
+    //llena el combo al abrir el formulario
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cboDificultad.removeAllItems();
         cboDificultad.addItem("Facil");
         cboDificultad.addItem("Media");
         cboDificultad.addItem("Dificil");
     }//GEN-LAST:event_formWindowOpened
-
+    //ejecuta las instrucciones para mover a la derecha
     private void btnDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDerechaActionPerformed
        //generar a la serpiente
         actualizarSerpiente();
@@ -264,7 +267,7 @@ public class Serpiente extends javax.swing.JFrame{
         pasosY=0;
         largo++;
     }//GEN-LAST:event_btnDerechaActionPerformed
-
+    //ejecuta las instrucciones para mover a arriba
     private void btnArribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArribaActionPerformed
         //generar a la serpiente
         actualizarSerpiente();
@@ -279,7 +282,7 @@ public class Serpiente extends javax.swing.JFrame{
         pasosX=0;
         largo++;
     }//GEN-LAST:event_btnArribaActionPerformed
-
+    //ejecuta las instrucciones para mover a la izquierda
     private void btnIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzquierdaActionPerformed
         //generar a la serpiente
         actualizarSerpiente();
@@ -294,7 +297,7 @@ public class Serpiente extends javax.swing.JFrame{
         pasosY=0;
         largo++;
     }//GEN-LAST:event_btnIzquierdaActionPerformed
-
+    //ejecuta las instrucciones reiniciar el juego
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         perder();
     }//GEN-LAST:event_btnNuevoActionPerformed
