@@ -1,0 +1,97 @@
+#variable se memoria
+temas=[]
+preguntas=[]
+#funcion para generar el menu principal
+def getMenuPrincipal():
+    print("1. Crear nuevo foro")
+    print("2. Comentar en foro")
+    print("3. Eliminar foro")
+    print("4. Salir")
+    print("____________________________")
+    opcion= input()
+    print("Usted a escogido la opcion "+opcion)
+    print("____________________________")
+    return opcion
+#funcion para crear un nuevo tema de foro
+def nuevoForo(nombre):
+    pregunta=input("Ingrese el titulo del tema y una descripcion:\n")
+    if(pregunta!=""):
+        temas.append(pregunta+" -por "+nombre)
+        print("Nuevo Tema agregado:\n"+pregunta+" -por "+nombre)
+        print("____________________________")
+        elecionDeMenu(nombre)
+    else:
+        print("Se necesita un Titulo para crear\n el foro de discucion")
+        print("____________________________")
+        nuevoForo(nombre)
+#funcion para crear un nuevo comentario en el foro
+def comentarForo(nombre):
+    contador=1
+    for tema in temas:
+        print(str(contador)+". "+tema)
+        contador=contador+1
+    numeral=input()
+    if(int(numeral)<=len(temas)):
+        print(temas[int(numeral)-1])
+        comentario=input("Ingrese su comentario:\n")
+        if(comentario!=""):
+            nuevoPregunta=[
+                comentario,
+                numeral,
+                nombre
+            ]
+            preguntas.append(nuevoPregunta)
+            for comentario in preguntas:
+                if(comentario[1]==numeral):
+                    print(comentario[0]+"\n-por "+comentario[2]+"\n")
+            print("____________________________")
+            elecionDeMenu(nombre)
+        else:
+            print("Ingrese un comentario:")
+            comentarForo(nombre)
+    else:
+        print("Ingrese de nuevo el numeral:\n")
+        comentarForo(nombre)
+#funcion para eliminar un tema de foro
+def eliminarForo(nombre):
+    contador=1
+    for tema in temas:
+        print(str(contador)+". "+tema)
+        contador=contador+1
+    opcion=input()
+    if(int(opcion)<=len(temas)):
+        temas.pop(int(opcion)-1)
+        print("____________________________")       
+        elecionDeMenu(nombre)  
+    else:
+        print("Ingrese el numero del tema") 
+        eliminarForo(nombre)
+#funcion para cerrar la aplicacion
+def cerrar():
+    quit()
+#funcion para hacer la elecion de menu
+def elecionDeMenu(nombre):
+    opcion=getMenuPrincipal()
+    if(opcion=="1"):
+        nuevoForo(nombre)  
+    elif(opcion=="2"):
+        comentarForo(nombre)
+    elif(opcion=="3"):
+        eliminarForo(nombre)   
+    elif(opcion=="4"):
+        cerrar()
+    elif(opcion!=""):
+        elecionDeMenu(nombre)
+#funcion para ejecutar la aplicacion 
+def empezar():
+    nombre=input("Ingrese su nombre de usuario:\n")
+    if(nombre!=""):
+        print("____________________________")
+        elecionDeMenu(nombre)
+    else:
+        print("Se necesita de un nombre de usuario")
+        print("____________________________")
+        empezar()
+#la llamada a esta funcino ejecuta la aplicacion principal
+empezar()
+
